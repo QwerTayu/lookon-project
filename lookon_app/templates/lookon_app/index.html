@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LookON! Prototype</title>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+        }
+        .image-container {
+            margin-bottom: 20px;
+        }
+        .result-container {
+            font-size: 50px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image-container">
+            {% if image_path %}
+                <img src="{{ MEDIA_URL }}{{ image_path }}" alt="Uploaded Image" width="500" height="500">
+                <p>{{ image_path }}</p>
+            {% else %}
+                <p>No image uploaded yet.</p>
+            {% endif %}
+        </div>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" name="image" required>
+            <button type="submit">Upload Image</button>
+        </form>
+        {% if classification_result %}
+            <div class="result-container">
+                Result: {{ classification_result }}
+                (Probability: {{ prediction_probability|floatformat:2 }})
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
