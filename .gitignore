@@ -8,3 +8,7 @@ env/
 venv/
 
 .env
+
+migrations/
+
+media/images/
