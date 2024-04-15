@@ -1,8 +1,7 @@
 __pycache__/
 
-*.pyc
-
 db.sqlite3
+db.sqlite3-journal
 
 env/
 venv/
@@ -12,3 +11,8 @@ venv/
 migrations/
 
 media/images/
+
+*.log
+*.pot
+*.pyc
+local_settings.py
